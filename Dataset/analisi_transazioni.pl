@@ -73920,13 +73920,13 @@ cluster_fraudolente(Cluster) :-
 lista_cluster_fraudolenti(ListaCluster) :-
     findall(Cluster, cluster_fraudolente(Cluster), ListaCluster).
 
+primi(N, List, Result) :-
+    length(Result, N),
+    append(Result, _, List).
+
 utenti_piu_ricchi(Top, N) :-
     N > 0,
     findall(Amount-User, utente(User, Amount), Users),
     keysort(Users, SortedUsers),
     reverse(SortedUsers, ReverseSortedUsers),
     primi(N, ReverseSortedUsers, Top).
-
-primi(N, List, Result) :-
-    length(Result, N),
-    append(Result, _, List).
